@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { FlightSearchComponent } from './flight-booking/flight-search/flight-search.component';
 import { HomeComponent } from './home/home.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
+import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
 import { AboutComponent } from './about/about.component';
+import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
+import { LoginGuard } from './shared/login.guard';
 
 
 export const APP_ROUTES: Routes = [
@@ -16,12 +18,8 @@ export const APP_ROUTES: Routes = [
         component: HomeComponent
     },
     {
-        path: 'passenger-search',
-        component: PassengerSearchComponent
-    },
-    {
-        path: 'flight-search',
-        component: FlightSearchComponent
+        path: 'flight-booking',
+        loadChildren: './flight-booking/flight-booking.module#FlightBookingModule'
     },
     {
         path: 'about',

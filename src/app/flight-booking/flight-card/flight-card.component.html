@@ -21,6 +21,8 @@
                     (click)="deselect()"
                 >Remove</button>
 
+            <a [routerLink]="['/flight-booking/flight-edit', item.id, {showDetails: false}]" [queryParams]="{x:1}">Edit</a>
+
             </p>
 
     </div>

@@ -6,31 +6,27 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { FlightSearchComponent } from './flight-search/flight-search.component';
-import { FlightCardComponent } from './flight-card/flight-card.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
+import { FlightBookingModule } from './flight-booking/flight-booking.module';
 
 @NgModule({
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      RouterModule.forRoot(APP_ROUTES)
+      RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules }),
+      
+      // FlightBookingModule // Do not import lazy modules
    ],
-   
    declarations: [
       AppComponent,
       SidebarComponent,
       NavbarComponent,
-      FlightSearchComponent,
-      FlightCardComponent,
       HomeComponent,
-      AboutComponent,
-      PassengerSearchComponent
+      AboutComponent
    ],
    providers: [],
    bootstrap: [
