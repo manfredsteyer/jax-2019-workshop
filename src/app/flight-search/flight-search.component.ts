@@ -15,6 +15,11 @@ export class FlightSearchComponent implements OnInit {
   flights: Array<Flight> = [];
   selectedFlight: Flight;
 
+  basked: object = {
+    "3": true,
+    "5": true
+  };
+
   // private http: HttpClient;
 
   constructor(private flightService: FlightService) {
@@ -25,22 +30,30 @@ export class FlightSearchComponent implements OnInit {
   }
 
   search() {
+
+    // <div *ngIf="busy">...
+    // this.busy = true
+
+    // this.basked = {};
+
     this
-    .flightService
-    .find(this.from, this.to)
-    .subscribe(
-      (flights) => {
-        this.flights = flights;
-      },
-      (err) => {
-        console.error('err', err);
-      }
-    );
+      .flightService
+      .find(this.from, this.to)
+      .subscribe(
+        (flights) => {
+          this.flights = flights;
+          // this.busy = false
+        },
+        (err) => {
+          console.error('err', err);
+          // this.busy = false
+        }
+      );
 
   }
 
   select(f: Flight) {
-    this.selectedFlight = f;  
+    this.selectedFlight = f;
   }
 
 }
